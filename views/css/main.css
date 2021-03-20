@@ -1,0 +1,6 @@
+.frame {
+    width: 30%;
+    height: fit-content;
+    min-height: 30px;
+    border: 1px solid #3d3d3d;
+}

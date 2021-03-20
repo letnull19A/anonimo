@@ -1,0 +1,22 @@
+<!Doctype html>
+<html>
+    <%- include('./elements/head.ejs'); -%>
+    <body>
+        <form method="POST">
+            <h1>Hello!</h1>
+            <span id="display-nick">Your NickName: {{ message }} </span><br/>
+            <input type="text" placeholder="Nickname" name="user[name]" value="" id="message">
+            <input type="submit" id="send" value="Go!" disabled>
+            <br/>
+            <a href="#">Create temp account</a>
+        </form>
+
+
+        <!--
+                WHAT&IS
+        -->
+
+        <%- include("./elements/include.ejs"); -%>
+
+    </body>
+</html>
