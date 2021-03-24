@@ -1,6 +1,6 @@
 var socket = io();
 
-if (socket != null) 
+if (socket != null)
 {
     console.log("%cSocket is Created!", "color:green");
 
@@ -23,9 +23,6 @@ if (socket != null)
                 }
             })
         });
-
-        //socket.emit("nickname", message.val());
-
     });
 
 
@@ -38,6 +35,5 @@ if (socket != null)
     }
 
     Vue.createApp(Main).mount("#display-nick");
-
 
 } else console.error("Socket is not created!");

@@ -1,11 +1,12 @@
-const app = require('express')();
-const express = require('express');
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const bodyParser = require('body-parser');
-const session = require('express-session');
-
-var route = require('./engine/router');
+const app = require('express')(),
+      express = require('express'),
+      http = require('http').Server(app),
+      io = require('socket.io')(http),
+      bodyParser = require('body-parser'),
+      session = require('express-session'),
+      route = require('./engine/router'),
+      socket = require('./engine/socket'),
+      auth = require('./engine/auth');
 
 app.use(express.static(__dirname));
 app.use(express.json());
@@ -13,30 +14,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(session({secret: '734e987accf23', saveUninitialized: true,}));
 
+var authSession = new auth.Auth();
 
-/*
- * ROUTING 
- */
-
-route.Route(app);
-
-/*
- * SOCKET.IO LISTEN EVENTS
- */
-
-io.on('connection', (socket) => {
-  console.log('User connected');
-
-  io.on('disconnetion', (socket) => {
-    console.log('User is disconnected!');
-  });
-
-});
-
-/*
- * APPLICATION LISTENER
- */
+route.Route(app, authSession);
+socket.Socket(io);
 
 http.listen(2379, () => {
-  console.log('listening on :2379');
+  console.log('[**CONSOLE**] Listening on port : ' + http.address().port);
 });
