@@ -2,13 +2,15 @@
 <html>
     <%- include('./elements/head.ejs'); -%>
     <body>
+        <p># Room token: <%= room_token %></p>
+        <p># Room name: <%= room_name %></p>
         <div class="frame">
             
         </div>
-        <form method="POST">
+        <div class="msgr">
             <input type="text" placeholder="message">
             <button>send message</button>
-        </form>
+        </div>
 
 
         <!--

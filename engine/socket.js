@@ -5,11 +5,16 @@ exports.Socket = function(io)
     io.on('connection', (socket) => {
         console.log('[**CONSOLE**] User connected');
 
+        manager = new rooms.RoomManager(socket);
+
+
         socket.on("disconnect", () => {
+            manager.Left();
             console.log("[**CONSOLE**] User disconnected");
         });
 
-        rooms.join(socket, "Some room");
+        manager.Join("Hello world");
+
 
     });
 }

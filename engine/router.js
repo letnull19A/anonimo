@@ -1,4 +1,4 @@
-exports.Route = function(app, auth) 
+exports.Route = function(app, auth, room)
 {
     app.get(["/main", "/", "/m"], (req, res) => {
         res.render('index', { title: "Anonimo main page" });
@@ -18,6 +18,14 @@ exports.Route = function(app, auth)
             title: "Anonimo chat list", 
             nickname: req.session.nickname 
           });
+      } else res.redirect("/m");
+    });
+
+    app.get(["/c:token", "/chat:token", "/:token"], (req, res) => {
+      if (req.session.nickname != null)
+      {
+
+        res.render('chat', { title: "Anonimo Chat page", room_token: req.params.token, room_name: "Some name this..." });
       } else res.redirect("/m");
     });
 }
