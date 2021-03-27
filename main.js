@@ -5,13 +5,14 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    
   });
 
   app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
 
   win.loadFile('./view/index.html')
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

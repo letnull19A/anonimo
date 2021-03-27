@@ -1,12 +1,23 @@
-$color-success: #000000;
-$color-await: #000000;
-$color-error: #000000;
-$color-load: #000000;
+$color-success: #b5ff2b;
+$color-await: #8f8f8f;
+$color-error: #ff3e3e;
+$color-load: #f9d423;
+$color-alpha: rgba(0, 0, 0, 0);
+$color-white: #fff;
+$background-color: #242424;
+$background-color-light: #525252;
+
+@mixin configue($color) 
+{
+    border-color: $color;
+    background-color: lighten($color, 0.8);
+}
 
 * {
     padding: 0;
     margin: 0;
     outline: none;
+    box-sizing: border-box;
 }
 
 html {height: 100%; width: 100%;}
@@ -15,25 +26,180 @@ body
 {
     height: 100%; 
     width: 100%;
-    background-color: whitesmoke;
+    background-color: $background-color;
+    overflow-x: hidden;
+
+    &::selection 
+    {
+        background-color: $color-alpha;
+    }
+
 }
 
 .status 
 {
+    position: fixed;
+    top: auto;
+    bottom: 0;
     width: 100%;
-    height: 45px;
-    border-top: 1px solid #000;
+    height: 55px;
+    border: 1px solid $color-alpha;
+    line-height: 55px;
+    text-align: center;
+
+    span 
+    {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        font-family: sans-serif;
+    }
 
     &.load 
-    {}
+    {
+        @include configue($color-load);
+        color: $color-white;
+    }
 
     &.error
-    {}
+    {
+        @include configue($color-error);
+    }
 
     &.success 
-    {}
+    {
+        @include configue($color-success);
+        color: $color-white;
+    }
 
     &.await 
-    {}
+    {
+        @include configue($color-await);
+    }
+
+    .fas 
+    {
+        position: relative;
+        right: 0;
+        left: auto;
+    }
+
+}
+
+main 
+{
+    width: 100%;
+    height: 100%;
+}
+
+.center-absolute 
+{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form.form 
+{
+    display: block;
+    width: 300px;
+    height: fit-content;
+    background-color: $background-color-light;
+    padding: 30px;
+    border-radius: 10px;
+
+    .element 
+    {
+        width: 100%;
+    }
+
+    p 
+    {
+        color: $color-white;
+        font-family: sans-serif;
+        line-height: 45px;
+        text-align: left;
+        font-size: 25px;
+    }
+
+    input.element
+    {
+        padding: 10px 5px 10px 5px;
+        height: 30px;
+        outline: none;
+        
+        &::placeholder 
+        {
+            font-family: sans-serif;
+            color: $background-color-light;
+        }
+
+    }
+
+    button.element 
+    {
+        height: 25px;
+        //background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+        background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+        font-family: sans-serif;
+        color: $color-white;
+        border: none;
+        margin-top: 10px;
+
+        &:hover 
+        {
+            cursor: pointer;
+        }
+
+        &:focus, &:active 
+        {
+            background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+        }
+
+    }
+
+}
+
+.container 
+{
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+header.header 
+{
+    position: fixed;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: 50px;
+    -webkit-box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.6);
+
+    .header-inner 
+    {
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        align-items: center;
+
+        h1 
+        {
+            font-family: sans-serif;
+            color: #f83600;
+        }
+
+        a 
+        {
+            color: $color-white;
+            text-decoration: underline;
+            font-family: sans-serif;
+            margin: 0 10px 0 10px;
+        }
+
+    }
 
 }
