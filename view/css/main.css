@@ -36,7 +36,7 @@ body::selection {
   line-height: normal;
   font-family: sans-serif;
 }
-.status.load {
+.status.warning {
   border-color: #f9d423;
   background-color: #f9d527;
   color: #fff;
@@ -53,11 +53,6 @@ body::selection {
 .status.await {
   border-color: #8f8f8f;
   background-color: #919191;
-}
-.status .fas {
-  position: relative;
-  right: 0;
-  left: auto;
 }
 
 main {

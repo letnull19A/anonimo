@@ -25,18 +25,20 @@
                 <button class="element" id="button-auth-template">Login template!</button>
             </form>
         </div>
-        <div id="dynamic-status" class="status" v-bind:class="{ success: isSuccess, error: isError, load: isLoad, await: isAwait }">
+        <div id="popup" class="status">
             <div class="conatiner">
-                <span>{{ title }}</span>
-                <i class="fas fa-times"></i>
+                <h3 id="popup-title"></h3>
+                <p id="popup-text"></p>
             </div>
         </div>
     </main>
 </body>
-    <script src="./include/jquery.js"></script>
+    <script src="./js/popup.js" type="module"></script>
+    <script src="./include/jquery.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://unpkg.com/socket.io-client@4.0.0/dist/socket.io.min.js" type="text/javascript"></script>
+    <script src="./include/socket.io.min.js" type="text/javascript"></script>
     <script src="./js/script.dev.js" type="text/javascript"></script>
+    <script src="./js/main.js" type="module"></script>
     <link rel="stylesheet" href="./include/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="./css/main.css">
 </html>

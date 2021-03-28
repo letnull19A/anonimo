@@ -1,7 +1,7 @@
 $color-success: #b5ff2b;
 $color-await: #8f8f8f;
 $color-error: #ff3e3e;
-$color-load: #f9d423;
+$color-warning: #f9d423;
 $color-alpha: rgba(0, 0, 0, 0);
 $color-white: #fff;
 $background-color: #242424;
@@ -55,9 +55,9 @@ body
         font-family: sans-serif;
     }
 
-    &.load 
+    &.warning 
     {
-        @include configue($color-load);
+        @include configue($color-warning);
         color: $color-white;
     }
 
@@ -75,13 +75,6 @@ body
     &.await 
     {
         @include configue($color-await);
-    }
-
-    .fas 
-    {
-        position: relative;
-        right: 0;
-        left: auto;
     }
 
 }

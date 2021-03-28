@@ -12,7 +12,7 @@ function createWindow () {
   app.commandLine.appendSwitch('ignore-certificate-errors', 'true');
 
   win.loadFile('./view/index.html')
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
